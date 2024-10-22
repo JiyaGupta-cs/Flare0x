@@ -66,7 +66,7 @@ export default function Home() {
   return (
     <main className="">
       <h1 className="text-left text-2xl font-bold  font-sans mb-4 ">
-        Telegram Miniapp Boilerplate
+        Telegram Miniapp - Jiya
       </h1>
       <div className="grid xl:grid-cols-4 grid-cols-1 lg:grid-cols-2  gap-4 ">
         <div className="p-4 hover:bg-gray-200 w-full bg-gray-100 rounded-lg">
