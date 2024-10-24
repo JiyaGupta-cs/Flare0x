@@ -4,7 +4,7 @@ import  './Candle.css'; // Assuming you will use CSS modules
 
 const Candle = () => {
   return (
-    <div class="holder">
+    <div class="holder ">
     <div class="candle">
       <div class="blinking-glow"></div>
       <div class="thread"></div>

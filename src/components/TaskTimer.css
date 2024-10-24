@@ -1,0 +1,37 @@
+.time-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
+  
+  .time-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Set width for your cards */
+    height: 50px; /* Set height for your cards */
+    background-color: rgba(255, 255, 255, 0.1); /* Background for visibility */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.5s ease; /* Smooth transition for animation */
+  }
+  
+  .time-card.revolve {
+    animation: revolve 1s ease forwards; /* Trigger animation when revolving */
+  }
+  
+  @keyframes revolve {
+    0% {
+      transform: rotateX(0deg);
+    }
+    100% {
+      transform: rotateX(360deg);
+    }
+  }
+  
+  .separator {
+    font-size: 2rem; /* Size for the separator */
+    color: white; /* Color for the separator */
+    margin: 0 10px; /* Spacing around the separator */
+  }
+  
