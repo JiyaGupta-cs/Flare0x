@@ -2,7 +2,19 @@
 import { useReadContract, useAccount } from "wagmi"; // Import required hooks
 import { forestAbi } from "@/constants/abi"; // Your contract ABI
 import { forestAddress } from "@/constants/index"; // Your contract address
-
+function formatNumber(number) {
+  if (number >= 1e12) {
+    return (number / 1e12).toFixed(0) + ' T'; // Trillions
+  } else if (number >= 1e9) {
+    return (number / 1e9).toFixed(0) + ' B'; // Billions
+  } else if (number >= 1e6) {
+    return (number / 1e6).toFixed(0) + ' M'; // Millions
+  } else if (number >= 1e3) {
+    return (number / 1e3).toFixed(0) + ' K'; // Thousands
+  } else {
+    return number.toString();
+  }
+}
 export function ReadContract() {
   const { address: userAddress } = useAccount(); // Get the connected user's address
 
@@ -50,7 +62,8 @@ export function ReadContract() {
           <span className="text-rabble
               bg-orange-600 flex gap-4 items-center justify-center  bg-opacity-30 rounded-xl p-2
 
-          ">{tokenBalance?.toString()} Flares 🔥</span>
+          "> {formatNumber(parseFloat(tokenBalance?.toString()))} Flares 🔥</span>
+
         </div>
       )}
 
