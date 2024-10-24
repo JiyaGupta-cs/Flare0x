@@ -74,9 +74,9 @@ export function CreateTask() {
 
   return (
     <>
-      <form onSubmit={submit}>
-        <p className="text-sm text-gray-500">Create a new task with a timer</p>
-        <div className="flex w-full max-w-sm items-center space-x-2">
+      <form onSubmit={submit} className="flex flex-col justify-center items-center">
+        <p className="text-sm my-4 text-center text-[#ffc875]">Create a new task with a timer</p>
+        <div className="flex flex-col gap-4 justify-center w-full max-w-sm items-center">
           <Input
             name="taskLabel"
             placeholder="Task Label"
@@ -96,6 +96,7 @@ export function CreateTask() {
             type="submit"
             variant={"rabble"}
             size={"one-third"}
+            className='w-full p-2'
           >
             {isPending ? "Confirming..." : "Create Task"}
           </Button>

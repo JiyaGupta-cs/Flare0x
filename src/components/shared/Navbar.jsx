@@ -12,7 +12,8 @@ const Navbar = () => {
   return (
     <nav className="mx-3 my-4">
       <div className="flex items-end">
-        <Image src="/rabble.svg" alt="Rabble" width={82.8} height={21.6} />
+        {/* <Image src="/rabble.svg" alt="Rabble" width={82.8} height={21.6} /> */}
+        <p className="font-black text-2xl text-rabble">Flare 🔥</p>
         <div className="ml-auto flex items-center ">
           <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
         </div>
