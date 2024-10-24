@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        rabble: "#08F7AF",
+        rabble: "#ff9a00",
         back: "#E7E7E7",
         border: "hsl(var(--border))",
         background: "black",
@@ -35,7 +35,7 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        foreground: "hsl(var(--foreground))",
+        foreground: "#ff9a00",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
