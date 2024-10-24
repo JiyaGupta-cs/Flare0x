@@ -42,8 +42,15 @@ export function ReadContract() {
       ) : balanceError ? (
         <div className="text-red-500">Error fetching balance: {balanceError.message}</div>
       ) : (
-        <div className="text-2xl">
-          Token Balance: <span className="text-rabble">{tokenBalance?.toString()}</span>
+        <div className="text-2xl
+          bg-orange-600 flex gap-4 items-center justify-center  bg-opacity-40 rounded-xl p-4 text-[#DA810D]
+ mb-4
+ ">
+          <span>Token Balance: </span>
+          <span className="text-rabble
+              bg-orange-600 flex gap-4 items-center justify-center  bg-opacity-30 rounded-xl p-2
+
+          ">{tokenBalance?.toString()} Flares 🔥</span>
         </div>
       )}
 
