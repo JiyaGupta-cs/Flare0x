@@ -69,7 +69,7 @@ export function TelegramProvider(props) {
     </ErrorBoundary>
   ) : (
     <div className=" absolute top-0 left-0 flex flex-col items-center  gap-4 justify-center w-full h-full">
-      <Image src={"/butterfly.svg"} alt="Rabble" width={38} height={64} />
+      <Image src={"/flare.png"} alt="Rabble" width={110} height={110} />
       <div className="flex gap-4">
         <p>Loading</p>
         <Image

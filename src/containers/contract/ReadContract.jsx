@@ -59,7 +59,7 @@ export function ReadContract() {
       ) : balanceError ? (
         <div className="text-red-500">Error fetching balance: {balanceError.message}</div>
       ) : (
-        <div className="text-2xl bg-orange-600 flex  gap-1 items-center justify-center bg-opacity-40 rounded-xl p-4 text-[#DA810D] mb-4">
+        <div className="text-2xl bg-orange-600 flex  gap-2 items-center justify-center bg-opacity-40 rounded-xl p-4 text-[#DA810D] mb-4">
           <span className="text-sm flex flex-col md:flex-row flex-wrap">
             <span>Token</span>
             <span>Balance:</span>
