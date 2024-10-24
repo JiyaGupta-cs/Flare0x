@@ -2,6 +2,7 @@
 import { useReadContract, useAccount } from "wagmi"; // Import required hooks
 import { forestAbi } from "@/constants/abi"; // Your contract ABI
 import { forestAddress } from "@/constants/index"; // Your contract address
+
 function formatNumber(number) {
   if (number >= 1e12) {
     return (number / 1e12).toFixed(0) + ' T'; // Trillions
@@ -15,6 +16,7 @@ function formatNumber(number) {
     return number.toString();
   }
 }
+
 export function ReadContract() {
   const { address: userAddress } = useAccount(); // Get the connected user's address
 
@@ -46,6 +48,9 @@ export function ReadContract() {
     enabled: !!userAddress, // Only run if userAddress is available
   });
 
+  // Log the task history to the console
+  console.log("Task History:", taskHistory);
+
   return (
     <div className="text-left my-8 px-8">
       {/* Display Token Balance */}
@@ -54,16 +59,11 @@ export function ReadContract() {
       ) : balanceError ? (
         <div className="text-red-500">Error fetching balance: {balanceError.message}</div>
       ) : (
-        <div className="text-2xl
-          bg-orange-600 flex gap-4 items-center justify-center  bg-opacity-40 rounded-xl p-4 text-[#DA810D]
- mb-4
- ">
+        <div className="text-2xl bg-orange-600 flex gap-4 items-center justify-center bg-opacity-40 rounded-xl p-4 text-[#DA810D] mb-4">
           <span>Token Balance: </span>
-          <span className="text-rabble
-              bg-orange-600 flex gap-4 items-center justify-center  bg-opacity-30 rounded-xl p-2
-
-          "> {formatNumber(parseFloat(tokenBalance?.toString()))} Flares 🔥</span>
-
+          <span className="text-rabble bg-orange-600 flex gap-4 items-center justify-center bg-opacity-30 rounded-xl p-2">
+            {formatNumber(parseFloat(tokenBalance?.toString()))} Flares 🔥
+          </span>
         </div>
       )}
 
@@ -75,48 +75,27 @@ export function ReadContract() {
       ) : (
         <div className="relative overflow-x-auto shadow-md rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase dark:text-gray-400  my-3">
-              <tr >
-                <th scope="col" className="px-6 py-7  m-1 my-3 text-center
-                                 bg-orange-600 relative  bg-opacity-40 flex flex-col rounded-xl p-4 text-[#DA810D]
-
-                 dark:bg-gray-800">Task</th>
-                <th scope="col" className="px-6  py-7  m-1 my-3 text-center
-               bg-orange-600   bg-opacity-40  rounded-xl text-[#DA810D]
-
-                ">Duration (s)</th>
-                <th scope="col" className="px-6  py-7  m-1 my-3 text-center
-                                   bg-orange-600 relative  bg-opacity-40 flex flex-col rounded-xl p-4 text-[#DA810D]
-                  dark:bg-gray-800">Stat</th>
+            <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 my-3">
+              <tr>
+                <th scope="col" className="px-6 py-7 m-1 my-3 text-center bg-orange-600 relative bg-opacity-40 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">Task</th>
+                <th scope="col" className="px-6 py-7 m-1 my-3 text-center bg-orange-600 bg-opacity-40 rounded-xl text-[#DA810D]">Duration (s)</th>
+                <th scope="col" className="px-6 py-7 m-1 my-3 text-center bg-orange-600 relative bg-opacity-40 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">Stat</th>
               </tr>
             </thead>
             <tbody>
               {taskHistory?.map((task, index) => (
                 <tr key={index} className="my-10">
-                  <th scope="row" className="px-6 py-4 m-1 font-medium  whitespace-nowrap
-                   bg-orange-600 relative  bg-opacity-20 flex flex-col rounded-xl p-4 text-[#DA810D]
-                   dark:text-white dark:bg-gray-800 text-center">
+                  <th scope="row" className="px-6 py-4 m-1 font-medium whitespace-nowrap bg-orange-600 relative bg-opacity-20 flex flex-col rounded-xl p-4 text-[#DA810D] dark:text-white dark:bg-gray-800 text-center">
                     {task.label}
                   </th>
-                  <td className="px-6 py-4 text-center
-                                    bg-orange-600 relative m-1 bg-opacity-40  rounded-xl text-[#DA810D]
-                  ">{task.duration}</td>
-                  <td className="px-6 py-4  text-center
-                  bg-orange-600 relative  bg-opacity-20 m-1 flex flex-col rounded-xl p-4 text-[#DA810D]
-                  dark:bg-gray-800">{task.completed ? "Success" : "Fail"}</td>
+                  <td className="px-6 py-4 text-center bg-orange-600 relative m-1 bg-opacity-40 rounded-xl text-[#DA810D]">{task.duration.toString()}</td>
+                  <td className="px-6 py-4 text-center bg-orange-600 relative bg-opacity-20 m-1 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">{task.completed ? "Success" : "Fail"}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       )}
-
-      {/* Uncomment if you want to include the Create Task Button */}
-      {/* <div className="mt-4">
-        <button onClick={handleCreateTask} className="btn">
-          Create Task
-        </button>
-      </div> */}
     </div>
   );
 }
