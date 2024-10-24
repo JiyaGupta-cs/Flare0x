@@ -5,22 +5,25 @@ import { Button } from "@/components/ui/button";
 import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { toast } from "sonner";
 
-import { counterAbi } from "@/constants/abi";
-import { counterAddress } from "@/constants/index";
+import { forestAbi } from "@/constants/abi";  // Replace with your actual ABI
+import { forestAddress } from "@/constants/index";  // Replace with your actual contract address
 
-export function WriteContract() {
+export function CreateTask() {
   const { data: hash, isPending, writeContract } = useWriteContract();
 
   async function submit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const tokenId = formData.get("value");
-    console.log(tokenId);
+    const taskLabel = formData.get("taskLabel");
+    const timeInMinutes = formData.get("timeInMinutes");
+
+    console.log({ taskLabel, timeInMinutes });
+    
     writeContract({
-      address: counterAddress,
-      abi: counterAbi,
-      functionName: "setNumber",
-      args: [BigInt(tokenId)],
+      address: forestAddress,
+      abi: forestAbi,
+      functionName: "createTask",  // Contract function for creating a task
+      args: [taskLabel, BigInt(timeInMinutes)],  // Pass task label and time in minutes as arguments
     });
   }
 
@@ -34,7 +37,7 @@ export function WriteContract() {
 
   useEffect(() => {
     if (isConfirmed) {
-      toast.success("Transaction Successful");
+      toast.success("Task Created Successfully");
     }
     if (error) {
       toast.error("Transaction Failed");
@@ -44,15 +47,22 @@ export function WriteContract() {
   return (
     <form onSubmit={submit}>
       <p className="text-sm text-gray-500">
-        Make this counter your favorite number
+        Create a new task with a timer
       </p>
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input
-          name="value"
-          placeholder="14"
+          name="taskLabel"
+          placeholder="Task Label"
+          type="text"
+          required
+          className="bg-black text-white rounded-full"
+        />
+        <Input
+          name="timeInMinutes"
+          placeholder="Time in minutes"
           type="number"
           required
-          className="bg-black text-white rounded-full "
+          className="bg-black text-white rounded-full"
         />
         <Button
           disabled={isPending || isConfirming}
@@ -60,7 +70,7 @@ export function WriteContract() {
           variant={"rabble"}
           size={"one-third"}
         >
-          {isPending ? "Confirming..." : "Set Number"}
+          {isPending ? "Confirming..." : "Create Task"}
         </Button>
       </div>
     </form>
