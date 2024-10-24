@@ -5,13 +5,13 @@ import { forestAddress } from "@/constants/index"; // Your contract address
 
 function formatNumber(number) {
   if (number >= 1e12) {
-    return (number / 1e12).toFixed(0) + ' T'; // Trillions
+    return (number / 1e12).toFixed(0) + 'T'; // Trillions
   } else if (number >= 1e9) {
-    return (number / 1e9).toFixed(0) + ' B'; // Billions
+    return (number / 1e9).toFixed(0) + 'B'; // Billions
   } else if (number >= 1e6) {
-    return (number / 1e6).toFixed(0) + ' M'; // Millions
+    return (number / 1e6).toFixed(0) + 'M'; // Millions
   } else if (number >= 1e3) {
-    return (number / 1e3).toFixed(0) + ' K'; // Thousands
+    return (number / 1e3).toFixed(0) + 'K'; // Thousands
   } else {
     return number.toString();
   }
@@ -59,10 +59,15 @@ export function ReadContract() {
       ) : balanceError ? (
         <div className="text-red-500">Error fetching balance: {balanceError.message}</div>
       ) : (
-        <div className="text-2xl bg-orange-600 flex gap-4 items-center justify-center bg-opacity-40 rounded-xl p-4 text-[#DA810D] mb-4">
-          <span>Token Balance: </span>
-          <span className="text-rabble bg-orange-600 flex gap-4 items-center justify-center bg-opacity-30 rounded-xl p-2">
-            {formatNumber(parseFloat(tokenBalance?.toString()))} Flares 🔥
+        <div className="text-2xl bg-orange-600 flex  gap-1 items-center justify-center bg-opacity-40 rounded-xl p-4 text-[#DA810D] mb-4">
+          <span className="text-sm flex flex-col md:flex-row flex-wrap">
+            <span>Token</span>
+            <span>Balance:</span>
+             
+             </span>
+          <span className="text-rabble text-lg flex-wrap bg-orange-600 flex sm:gap-0 items-center justify-center bg-opacity-30 rounded-xl p-2">
+          <span> {formatNumber(parseFloat(tokenBalance?.toString()))}</span>  
+            <span>Flares 🔥</span> 
           </span>
         </div>
       )}
