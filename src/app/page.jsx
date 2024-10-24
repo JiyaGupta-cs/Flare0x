@@ -9,6 +9,8 @@ import {
 import Link from "next/link";
 import Arrow from "@/assets/Arrow";
 import { Button } from "@/components/ui/button";
+import { ReadContract } from "@/containers/contract/ReadContract";
+import { CreateTask } from "@/containers/contract/WriteContract";
 
 export default function Home() {
   const utils = useUtils();
@@ -66,9 +68,9 @@ export default function Home() {
   return (
     <main className="">
       <h1 className="text-left text-2xl font-bold  font-sans mb-4 ">
-        Telegram Miniapp - Jiya
+        Flare
       </h1>
-      <div className="grid xl:grid-cols-4 grid-cols-1 lg:grid-cols-2  gap-4 ">
+      {/* <div className="grid xl:grid-cols-4 grid-cols-1 lg:grid-cols-2  gap-4 ">
         <div className="p-4 hover:bg-gray-200 w-full bg-gray-100 rounded-lg">
           <Link href="https://docs.telegram-mini-apps.com/" target="_blank">
             <div className="flex justify-between">
@@ -104,7 +106,15 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </div>
+
+
+
+      </div> */}
+
+      
+      <div>
+           <CreateTask/>
+        </div>
     </main>
   );
 }

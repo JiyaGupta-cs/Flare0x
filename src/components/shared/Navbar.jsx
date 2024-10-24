@@ -35,7 +35,7 @@ const Navbar = () => {
               : "text-color hover:text-color/90"
           } `}
         >
-          Contract
+          Analytics
         </Link>
       </div>
     </nav>

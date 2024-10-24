@@ -1,6 +1,6 @@
 "use client";
 
-import { CreateTask} from "@/containers/contract/WriteContract";
+// import { CreateTask} from "@/containers/contract/WriteContract";
 import { ReadContract } from "@/containers/contract/ReadContract";
 
 import { useAccount } from "wagmi";
@@ -11,7 +11,7 @@ function ContractExample() {
       {isConnected ? (
         <>
           <ReadContract />
-          <CreateTask/>
+          {/* <CreateTask/> */}
         </>
       ) : (
         <div className=" flex flex-col gap-4 items-center justify-center text-center text-2xl ">
