@@ -70,7 +70,7 @@ export function TaskTimer() {
         <div className="tree">
           <Candle meltTime={10000}/>
         </div>
-        <p className="text-lg">
+        <p className="text-lg text-white">
           {label} - Time Left: {Math.floor(timeLeft / 60)}:{" "}
           {String(timeLeft % 60).padStart(2, "0")}
         </p>

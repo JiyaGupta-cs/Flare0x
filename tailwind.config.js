@@ -21,7 +21,7 @@ module.exports = {
         rabble: "#08F7AF",
         back: "#E7E7E7",
         border: "hsl(var(--border))",
-        background: "var(--tg-theme-bg-color)",
+        background: "black",
         "secondary-background": "var(--tg-theme-secondary-bg-color)",
         //         var(--tg-theme-bg-color)
         // var(--tg-theme-text-color)
@@ -30,7 +30,7 @@ module.exports = {
         // var(--tg-theme-button-color)
         // var(--tg-theme-button-text-color)
         //
-        color: "var(--tg-theme-text-color)",
+        color: "white",
         "subtitle-color": "var(--tg-theme-subtitle-text-color)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

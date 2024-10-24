@@ -5,7 +5,7 @@ import { TaskTimer } from "@/components/TaskTimer"; // Adjust the import path as
 const TaskTimerPage = () => {
   return (
     <div>
-      <h1 className="text-center text-2xl mt-4">Task Timer</h1>
+      {/* <h1 className="text-center text-2xl mt-4">Task Timer</h1> */}
       <TaskTimer />
     </div>
   );

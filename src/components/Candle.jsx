@@ -1,25 +1,19 @@
-import { useEffect, useState } from 'react';
-import styles from './Candle.module.css';
+import React from 'react';
+import  './Candle.module.css'; // Assuming you will use CSS modules
+import  './Candle.css'; // Assuming you will use CSS modules
 
 const Candle = () => {
-    const [isFlickering, setIsFlickering] = useState(false);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIsFlickering(prev => !prev);
-        }, 1000); // Change the timer duration as needed
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
-        <div className={styles.holder}>
-            <div className={styles.candle}>
-                <div className={styles.thread} />
-                <div className={`${styles.flame} ${isFlickering ? styles.blinkingGlow : ''}`} />
-            </div>
-        </div>
-    );
+  return (
+    <div class="holder">
+    <div class="candle">
+      <div class="blinking-glow"></div>
+      <div class="thread"></div>
+      <div class="glow"></div>
+      <div class="flame"></div>
+    </div>
+  </div>
+  
+  );
 };
 
 export default Candle;
