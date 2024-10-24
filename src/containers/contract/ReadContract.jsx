@@ -1,11 +1,12 @@
 "use client";
-import { useReadContract, useWriteContract } from "wagmi"; // Import required hooks
+import { useReadContract, useAccount } from "wagmi"; // Import required hooks
 import { forestAbi } from "@/constants/abi"; // Your contract ABI
 import { forestAddress } from "@/constants/index"; // Your contract address
 
 export function ReadContract() {
+  const { address: userAddress } = useAccount(); // Get the connected user's address
+
   // Reading the task history of the current user
-  const userAddress = "0x7B4a63dBF8d494e438D3fC06839fE48006F3d449"; // Replace with the actual user's address
   const {
     data: taskHistory,
     status: historyStatus,
@@ -16,6 +17,7 @@ export function ReadContract() {
     address: forestAddress,
     functionName: "getTaskHistory",
     args: [userAddress], // Pass the user's address as an argument
+    enabled: !!userAddress, // Only run if userAddress is available
   });
 
   // Reading the token balance of the current user
@@ -29,32 +31,8 @@ export function ReadContract() {
     address: forestAddress,
     functionName: "getTokenBalance",
     args: [userAddress], // Pass the user's address as an argument
+    enabled: !!userAddress, // Only run if userAddress is available
   });
-
-  // Writing functions for creating and completing tasks
-  // const { write: createTask } = useWriteContract({
-  //   abi: forestAbi,
-  //   address: forestAddress,
-  //   functionName: "createTask",
-  // });
-
-  // const { write: completeTask } = useWriteContract({
-  //   abi: forestAbi,
-  //   address: forestAddress,
-  //   functionName: "completeTask",
-  // });
-
-  // const handleCreateTask = async () => {
-  //   const label = "New Task"; // Replace with actual task label
-  //   const duration = 60; // Replace with desired duration in seconds
-  //   const tx = await createTask({ args: [label, duration] });
-  //   console.log(tx); // Handle transaction response
-  // };
-
-  // const handleCompleteTask = async (taskId) => {
-  //   const tx = await completeTask({ args: [taskId] });
-  //   console.log(tx); // Handle transaction response
-  // };
 
   return (
     <div className="text-left my-8">
@@ -83,18 +61,13 @@ export function ReadContract() {
                 <div>
                   Task: {task.label} - Duration: {task.duration} seconds - Completed: {task.completed ? "Yes" : "No"}
                 </div>
-                {task.completed && (
-                  <button onClick={() => handleCompleteTask(index)} className="btn">
-                    Complete Task
-                  </button>
-                )}
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      {/* Create Task Button */}
+      {/* Uncomment if you want to include the Create Task Button */}
       {/* <div className="mt-4">
         <button onClick={handleCreateTask} className="btn">
           Create Task

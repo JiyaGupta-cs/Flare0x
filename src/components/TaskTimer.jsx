@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation'; // Import useRoute
 import { useWriteContract } from "wagmi";
 import { forestAbi } from "@/constants/abi"; // Your ABI
 import { forestAddress } from "@/constants/index"; // Your contract address
+import Candle from "./Candle";
 
 export function TaskTimer() {
   const searchParams = useSearchParams(); // Get search parameters
@@ -67,8 +68,7 @@ export function TaskTimer() {
       <div className="timer-animation">
         {/* Tree growing animation placeholder */}
         <div className="tree">
-          <span className="tree-trunk"></span>
-          <span className="tree-leaves"></span>
+          <Candle meltTime={10000}/>
         </div>
         <p className="text-lg">
           {label} - Time Left: {Math.floor(timeLeft / 60)}:{" "}
