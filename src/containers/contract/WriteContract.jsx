@@ -75,7 +75,7 @@ export function CreateTask() {
   return (
     <>
       <form onSubmit={submit} className="flex flex-col justify-center items-center">
-        <p className="text-xl font--black my-8 text-center text-[#ffc875]">Until The Candles Dies !!!</p>
+        <p className="text-3xl font-black my-8 text-center text-[#e68b00]">Until The Candles Dies !!!</p>
         <div className="flex flex-col gap-8 justify-center w-full max-w-sm items-center">
           <Input
             name="taskLabel"
