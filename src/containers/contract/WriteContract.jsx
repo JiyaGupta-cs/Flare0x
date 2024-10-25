@@ -8,16 +8,16 @@ import { useRouter } from "next/navigation"; // Import useRouter
 import { forestAbi } from "@/constants/abi"; // Replace with your actual ABI
 import { forestAddress } from "@/constants/index"; // Replace with your actual contract address
 import Modal from "@/components/Modal"; // Import the Modal component
-
+import './Button.css'
 export function CreateTask() {
   const router = useRouter();
   const { data: hash, isPending, writeContract } = useWriteContract();
-  
+
   // State for modal visibility and message
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  
+
   // State to store task details for redirection
   const [taskLabel, setTaskLabel] = useState("");
   const [timeInMinutes, setTimeInMinutes] = useState(0);
@@ -98,8 +98,31 @@ export function CreateTask() {
             size={"one-third"}
             className='w-full p-2'
           >
+
+
             {isPending ? "Confirming..." : "Create Task"}
+
+
           </Button>
+
+
+          <button 
+          disabled={isPending || isConfirming}
+            type="submit" class="fbtn">
+          {isPending ? "Confirming..." : "Create Task"}
+
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+          </button>
+
+
+
         </div>
       </form>
 
