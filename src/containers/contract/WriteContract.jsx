@@ -75,23 +75,30 @@ export function CreateTask() {
   return (
     <>
       <form onSubmit={submit} className="flex flex-col justify-center items-center">
-        <p className="text-sm my-4 text-center text-[#ffc875]">Create a new task with a timer</p>
-        <div className="flex flex-col gap-4 justify-center w-full max-w-sm items-center">
+        <p className="text-xl font--black my-8 text-center text-[#ffc875]">Until The Candles Dies !!!</p>
+        <div className="flex flex-col gap-8 justify-center w-full max-w-sm items-center">
           <Input
             name="taskLabel"
             placeholder="Task Label"
             type="text"
             required
-            className="bg-black text-white rounded-full"
+            className="
+            bg-[#222630] px-4 py-6 outline-none w-full text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-[#2B3040]
+            "
           />
           <Input
             name="timeInMinutes"
             placeholder="Time in minutes"
             type="number"
             required
-            className="bg-black text-white rounded-full"
+            className="
+            bg-[#222630] px-4 py-6 outline-none w-full text-white rounded-lg border-2 transition-colors duration-100 border-solid focus:border-[#596A95] border-[#2B3040]
+            "
           />
-          <Button
+
+
+
+          {/* <Button
             disabled={isPending || isConfirming}
             type="submit"
             variant={"rabble"}
@@ -103,7 +110,7 @@ export function CreateTask() {
             {isPending ? "Confirming..." : "Create Task"}
 
 
-          </Button>
+          </Button> */}
 
 
           <button 
