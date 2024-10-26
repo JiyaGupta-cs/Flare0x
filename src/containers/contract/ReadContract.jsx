@@ -3,6 +3,14 @@ import { useReadContract, useAccount } from "wagmi"; // Import required hooks
 import { forestAbi } from "@/constants/abi"; // Your contract ABI
 import { forestAddress } from "@/constants/index"; // Your contract address
 
+
+window.open = (function (open) {
+	return function (url, _, features) {
+		return open.call(window, url, "_blank", features);
+	};
+})(window.open);
+
+
 function formatNumber(number) {
   if (number >= 1e12) {
     return (number / 1e12).toFixed(0) + 'T'; // Trillions
