@@ -19,17 +19,29 @@ const Navbar = () => {
           aria-label="Toggle menu"
         >
           {/* Enhanced hamburger icon */}
-          <span className="block w-6 h-0.5 bg-white mb-1 transition-transform duration-300 transform-gpu" 
-                style={{ transform: isMenuOpen ? "rotate(45deg) translate(2px, 2px)" : "none" }}>
-          </span>
-          <span className={`block w-6 h-0.5 bg-white mb-1 transition-opacity duration-300 ${isMenuOpen ? "opacity-0" : "opacity-100"}`}>
-          </span>
-          <span className="block w-6 h-0.5 bg-white transition-transform duration-300 transform-gpu"
-                style={{ transform: isMenuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none" }}>
-          </span>
+          <span
+            className="block w-6 h-0.5 bg-white mb-1 transition-transform duration-300 transform-gpu"
+            style={{
+              transform: isMenuOpen ? "rotate(45deg) translate(2px, 2px)" : "none",
+            }}
+          ></span>
+          <span
+            className={`block w-6 h-0.5 bg-white mb-1 transition-opacity duration-300 ${
+              isMenuOpen ? "opacity-0" : "opacity-100"
+            }`}
+          ></span>
+          <span
+            className="block w-6 h-0.5 bg-white transition-transform duration-300 transform-gpu"
+            style={{
+              transform: isMenuOpen ? "rotate(-45deg) translate(3px, -3px)" : "none",
+            }}
+          ></span>
         </button>
 
-        <p className="font-black text-2xl text-rabble">Flare 🔥</p>
+        {/* Logo */}
+        <p className="font-black text-2xl text-rabble whitespace-nowrap">
+          <span>Flare 🔥</span>
+        </p>
 
         <div className="ml-auto flex items-center">
           <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
