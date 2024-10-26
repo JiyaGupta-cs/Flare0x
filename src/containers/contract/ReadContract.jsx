@@ -2,13 +2,9 @@
 import { useReadContract, useAccount } from "wagmi"; // Import required hooks
 import { forestAbi } from "@/constants/abi"; // Your contract ABI
 import { forestAddress } from "@/constants/index"; // Your contract address
+import { useEffect } from "react";
 
 
-window.open = (function (open) {
-	return function (url, _, features) {
-		return open.call(window, url, "_blank", features);
-	};
-})(window.open);
 
 
 function formatNumber(number) {
@@ -26,6 +22,17 @@ function formatNumber(number) {
 }
 
 export function ReadContract() {
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.open = (function (open) {
+        return function (url, _, features) {
+          return open.call(window, url, "_blank", features);
+        };
+      })(window.open);
+    }
+  }, []);
+
   const { address: userAddress } = useAccount(); // Get the connected user's address
 
   // Reading the task history of the current user
