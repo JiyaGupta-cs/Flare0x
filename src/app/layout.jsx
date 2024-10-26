@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${outfit.variable} ${beVietnamPro.variable}`}>
-      <body className={beVietnamPro.className}zz>
+      <body className={beVietnamPro.className}>
         <Web3Provider>
           <TelegramProvider>
             <Layout>{children}</Layout>

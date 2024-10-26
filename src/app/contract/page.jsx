@@ -5,13 +5,20 @@ import { ReadContract } from "@/containers/contract/ReadContract";
 
 import { useAccount } from "wagmi";
 
-window.open = (function (open) {
-	return function (url, _, features) {
-		return open.call(window, url, "_blank", features);
-	};
-})(window.open);
 
 function ContractExample() {
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.open = (function (open) {
+        return function (url, _, features) {
+          return open.call(window, url, "_blank", features);
+        };
+      })(window.open);
+    }
+  }, []);
+  
+  
   const { isConnected } = useAccount();
   return (
     <div className="">
