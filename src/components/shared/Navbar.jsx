@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -11,7 +10,7 @@ const Navbar = () => {
 
   return (
     <nav className="mx-3 my-4">
-      <div className="flex items-end">
+      <div className="flex items-center">
         {/* Hamburger menu */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
