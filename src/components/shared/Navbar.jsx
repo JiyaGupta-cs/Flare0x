@@ -1,9 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+// import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { usePrivy, useWallets } from '@privy-io/react-auth';
+
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+
+const { ready, user, authenticated, login, connectWallet, logout, linkWallet } = usePrivy();
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -44,7 +48,8 @@ const Navbar = () => {
         </p>
 
         <div className="ml-auto flex items-center">
-          <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
+          {/* <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} /> */}
+          <button className="text-color/90 bg-rabble p-2  hover:text-color/80" onClick={connectWallet}>Connect</button>
         </div>
       </div>
       <hr className="bg-black my-2" />
@@ -53,19 +58,17 @@ const Navbar = () => {
       <div className="hidden md:flex space-x-4">
         <Link
           href="/"
-          className={`${
-            pathname === "/" ? "text-rabble" : "text-color hover:text-color/90"
-          }`}
+          className={`${pathname == "/" ? "text-rabble" : "text-color  hover:text-color/90"
+          } `}
         >
           Home
         </Link>
         <Link
           href="/contract"
-          className={`${
-            pathname === "/contract"
-              ? "text-rabble"
-              : "text-color hover:text-color/90"
-          }`}
+          className={`${pathname == "/contract"
+            ? "text-rabble"
+            : "text-color hover:text-color/90"
+            } `}
         >
           Analytics
         </Link>
