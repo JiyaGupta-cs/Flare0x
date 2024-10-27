@@ -67,49 +67,48 @@ export function ReadContract() {
   console.log("Task History:", taskHistory);
 
   return (
-    <div className="text-left my-8 px-8">
+    <div className="text-left my-8 px-8 bg-black text-white">
       {/* Display Token Balance */}
       {isBalanceLoading ? (
-        <div>Loading Balance...</div>
+        <div className="text-center text-gray-500">Loading Balance...</div>
       ) : balanceError ? (
-        <div className="text-red-500">Error fetching balance: {balanceError.message}</div>
+        <div className="text-center text-red-500">Error fetching balance: {balanceError.message}</div>
       ) : (
-        <div className="text-2xl bg-orange-600 flex  gap-2 items-center justify-center bg-opacity-40 rounded-xl p-4 text-[#DA810D] mb-4">
-          <span className="text-sm flex flex-col md:flex-row flex-wrap">
-            <span>Token</span>
-            <span>Balance:</span>
-             
-             </span>
-          <span className="text-rabble text-lg flex-wrap bg-orange-600 flex sm:gap-0 items-center justify-center bg-opacity-30 rounded-xl p-2">
-          <span> {formatNumber(parseFloat(tokenBalance?.toString()))}</span>  
-            <span>Flares 🔥</span> 
-          </span>
+        <div className="flex flex-col items-center bg-gray-800 rounded-lg p-6 shadow-md mb-6">
+          <div className="text-lg font-semibold text-orange-400">Token Balance</div>
+          <div className="text-3xl font-bold text-orange-600 mt-2">
+            {formatNumber(parseFloat(tokenBalance?.toString()))} Flares 🔥
+          </div>
         </div>
       )}
 
       {/* Display Task History */}
       {isHistoryLoading ? (
-        <div>Loading Task History...</div>
+        <div className="text-center text-gray-500">Loading Task History...</div>
       ) : historyError ? (
-        <div className="text-red-500">Error fetching task history: {historyError.message}</div>
+        <div className="text-center text-red-500">Error fetching task history: {historyError.message}</div>
       ) : (
-        <div className="relative overflow-x-auto shadow-md rounded-lg">
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 my-3">
+        <div className="overflow-x-auto shadow-md rounded-lg">
+          <table className="w-full text-sm text-left text-gray-500">
+            <thead className="bg-gray-800 text-orange-400 uppercase text-xs">
               <tr>
-                <th scope="col" className="px-6 py-7 m-1 my-3 text-center bg-orange-600 relative bg-opacity-40 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">Task</th>
-                <th scope="col" className="px-6 py-7 m-1 my-3 text-center bg-orange-600 bg-opacity-40 rounded-xl text-[#DA810D]">Duration (s)</th>
-                <th scope="col" className="px-6 py-7 m-1 my-3 text-center bg-orange-600 relative bg-opacity-40 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">Stat</th>
+                <th scope="col" className="px-6 py-3 text-center">Task</th>
+                <th scope="col" className="px-6 py-3 text-center">Duration (s)</th>
+                <th scope="col" className="px-6 py-3 text-center">Status</th>
               </tr>
             </thead>
             <tbody>
               {taskHistory?.map((task, index) => (
-                <tr key={index} className="my-10">
-                  <th scope="row" className="px-6 py-4 m-1 font-medium whitespace-nowrap bg-orange-600 relative bg-opacity-20 flex flex-col rounded-xl p-4 text-[#DA810D] dark:text-white dark:bg-gray-800 text-center">
+                <tr key={index} className="bg-gray-900 border-b border-gray-700 hover:bg-gray-700">
+                  <th scope="row" className="px-6 py-4 font-medium text-orange-400 text-center">
                     {task.label}
                   </th>
-                  <td className="px-6 py-4 text-center bg-orange-600 relative m-1 bg-opacity-40 rounded-xl text-[#DA810D]">{task.duration.toString()}</td>
-                  <td className="px-6 py-4 text-center bg-orange-600 relative bg-opacity-20 m-1 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">{task.completed ? "Success" : "Fail"}</td>
+                  <td className="px-6 py-4 text-center">
+                    {task.duration.toString()}
+                  </td>
+                  <td className={`px-6 py-4 text-center ${task.completed ? 'text-green-400' : 'text-red-400'}`}>
+                    {task.completed ? "Success" : "Fail"}
+                  </td>
                 </tr>
               ))}
             </tbody>
