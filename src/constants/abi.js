@@ -24,14 +24,8 @@ export const forestAbi = [
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "taskId",
-				"type": "uint256"
-			}
-		],
-		"name": "completeTask",
+		"inputs": [],
+		"name": "completeLastTask",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

@@ -21,6 +21,7 @@ export function TaskTimer() {
   // State to control the animation
   const [animateSeconds, setAnimateSeconds] = useState(false);
 
+
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setInterval(() => {
@@ -49,15 +50,17 @@ export function TaskTimer() {
       await writeContract({
         address: forestAddress,
         abi: forestAbi,
-        functionName: "completeTask",
-        args: [0], 
+        functionName: "completeLastTask",
+        args: [], 
       });
       setIsTaskComplete(true);
+      console.info("Task completed successfully!");
     } catch (error) {
       console.error("Error completing task:", error);
       alert("Error completing the task. Please try again.");
     }
   };
+  
 
   const handleGiveUp = () => {
     setTimeLeft(0); 

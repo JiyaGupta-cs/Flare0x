@@ -40,7 +40,7 @@ export function CreateTask() {
         address: forestAddress,
         abi: forestAbi,
         functionName: "createTask",
-        args: [label, BigInt(time * 60)], // Pass task label and duration in seconds
+        args: [label, BigInt(time * 60)],
       });
     } catch (error) {
       toast.error("Error sending transaction. Please try again.");
