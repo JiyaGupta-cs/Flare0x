@@ -187,6 +187,13 @@ export const forestAbi = [
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "giveUpLastTask",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",

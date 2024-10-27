@@ -62,10 +62,22 @@ export function TaskTimer() {
   };
   
 
-  const handleGiveUp = () => {
+  const handleGiveUp = async () => {
     setTimeLeft(0); 
-    setIsTaskComplete(true); 
-    alert("You have given up on the task."); 
+    
+    try {
+      await writeContract({
+        address: forestAddress,
+        abi: forestAbi,
+        functionName: "giveUpLastTask",
+        args: [],
+      });
+      console.info("You have given up on the last task.");
+    } catch (error) {
+      console.error("Error giving up on task:", error);
+      alert("Error giving up on the task. Please try again.");
+    }
+
     router.push("/"); 
   };
 
