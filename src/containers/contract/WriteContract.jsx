@@ -66,9 +66,9 @@ export function CreateTask() {
       setIsSuccess(true);
       setIsModalOpen(true);
       // Redirect to the timer page after the transaction is confirmed
-      setTimeout(() => {
-        router.push(`/task-timer?label=${encodeURIComponent(taskLabel)}&duration=${timeInMinutes * 60}`);
-      }, 3000); // Redirect after 3 seconds to allow user to see success message
+      // setTimeout(() => {
+      //   router.push(`/task-timer?label=${encodeURIComponent(taskLabel)}&duration=${timeInMinutes * 60}`);
+      // }, 3000); // Redirect after 3 seconds to allow user to see success message
     }
   }, [error, hash, taskLabel, timeInMinutes]); // Include taskLabel and timeInMinutes in dependencies
 

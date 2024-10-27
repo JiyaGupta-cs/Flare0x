@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
+import '../containers/contract/Modal.css'
 
 const Modal = ({ isOpen, onClose, title, message, isSuccess }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white rounded-lg p-6 shadow-lg max-w-sm">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50  h-[50vh] ffbtn text-white">
+      <div className=" text-center rounded-lg p-6 shadow-lg max-w-sm text-white z-50">
         <h2 className="text-xl font-semibold">{title}</h2>
         <p className="mt-2">{message}</p>
         <div className="mt-4 flex justify-center">
@@ -17,10 +18,18 @@ const Modal = ({ isOpen, onClose, title, message, isSuccess }) => {
           )}
         </div>
         <div className="mt-4">
-          <button className="bg-blue-500 text-white rounded-full px-4 py-2" onClick={onClose}>
+          <button className="bg-orange-600 text-white rounded-full px-4 py-2" onClick={onClose}>
             Close
           </button>
         </div>
+      </div>
+      <div id="container-stars">
+        <div id="stars"></div>
+      </div>
+
+      <div id="glow">
+        <div class="circle"></div>
+        <div class="circle"></div>
       </div>
     </div>
   );
