@@ -85,7 +85,7 @@ export function ReadContract() {
       ) : (
         <div className="flex flex-col items-center bg-gray-800 rounded-lg p-6 shadow-md mb-6">
           <div className="text-lg font-semibold text-orange-400">Token Balance</div>
-          <div className="text-3xl font-bold text-orange-600 mt-2">
+          <div className="text-2xl font-bold text-orange-600 mt-2">
             {formatNumber(parseFloat(tokenBalance?.toString()))} Flares 🔥
           </div>
         </div>
