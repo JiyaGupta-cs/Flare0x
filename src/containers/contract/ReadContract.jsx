@@ -103,12 +103,8 @@ export function ReadContract() {
                   <th scope="row" className="px-6 py-4 font-medium text-orange-400 text-center">
                     {task.label}
                   </th>
-                  <td className="px-6 py-4 text-center">
-                    {task.duration.toString()}
-                  </td>
-                  <td className={`px-6 py-4 text-center ${task.completed ? 'text-green-400' : 'text-red-400'}`}>
-                    {task.completed ? "Success" : "Fail"}
-                  </td>
+                  <td className="px-6 py-4 text-center bg-orange-600 relative m-1 bg-opacity-40 rounded-xl text-[#DA810D]">{task.duration.toString()}</td>
+                  <td className="px-6 py-4 text-center bg-orange-600 relative bg-opacity-20 m-1 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">{task.success ? "Success" : "Fail"}</td>
                 </tr>
               ))}
             </tbody>
