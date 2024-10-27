@@ -56,7 +56,7 @@ const Navbar = () => {
 
             {/* Wallet Connection */}
             <div className="flex items-center">
-              <ConnectButton.Custom>
+              {/* <ConnectButton.Custom>
                 {({
                   account,
                   chain,
@@ -123,7 +123,10 @@ const Navbar = () => {
                     </div>
                   );
                 }}
-              </ConnectButton.Custom>
+              </ConnectButton.Custom> */}
+                 <div className="ml-auto flex items-center ">
+          <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
+        </div>
             </div>
           </div>
         </div>
