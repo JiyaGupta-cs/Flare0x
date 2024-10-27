@@ -4,9 +4,6 @@ import { forestAbi } from "@/constants/abi"; // Your contract ABI
 import { forestAddress } from "@/constants/index"; // Your contract address
 import { useEffect } from "react";
 
-
-
-
 function formatNumber(number) {
   if (number >= 1e12) {
     return (number / 1e12).toFixed(0) + 'T'; // Trillions
@@ -22,7 +19,6 @@ function formatNumber(number) {
 }
 
 export function ReadContract() {
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.open = (function (open) {
@@ -66,6 +62,19 @@ export function ReadContract() {
   // Log the task history to the console
   console.log("Task History:", taskHistory);
 
+  const formatTimestamp = (timestamp) => {
+    // Ensure timestamp is a number before converting
+    return new Date(Number(timestamp) * 1000).toLocaleString(undefined, {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    });
+  };
+
   return (
     <div className="text-left my-8 px-8 bg-black text-white">
       {/* Display Token Balance */}
@@ -103,8 +112,57 @@ export function ReadContract() {
                   <th scope="row" className="px-6 py-4 font-medium text-orange-400 text-center">
                     {task.label}
                   </th>
-                  <td className="px-6 py-4 text-center bg-orange-600 relative m-1 bg-opacity-40 rounded-xl text-[#DA810D]">{task.duration.toString()}</td>
-                  <td className="px-6 py-4 text-center bg-orange-600 relative bg-opacity-20 m-1 flex flex-col rounded-xl p-4 text-[#DA810D] dark:bg-gray-800">{task.success ? "Success" : "Fail"}</td>
+                  <td className="text-center">
+                    <span className="px-4 py-2 text-center bg-orange-600 relative m-1 bg-opacity-40 rounded-xl text-[#DA810D]">
+
+
+                      {/* {formatTimestamp(task.endTime)}
+                      <br />
+                      {formatTimestamp(task.startTime)}
+                      <br />
+                      {formatTimestamp(task.endTime - task.startTime)}
+                      <br /> */}
+
+
+
+                      {task.startTime && task.endTime ? (
+                        (() => {
+                          // Convert BigInt to Number for calculation
+                          const startTime = Number(task.startTime);
+                          const endTime = Number(task.endTime);
+
+                          // Calculate the total difference in seconds
+                          const totalSeconds = Math.floor((endTime - startTime));
+
+                          // Calculate minutes and seconds
+                          const minutes = Math.floor(totalSeconds / 60);
+                          const seconds = totalSeconds % 60;
+
+                          // Determine the output format
+                          if (minutes > 0) {
+                            return `${minutes} mins ${seconds} secs`;
+                          } else {
+                            return `${seconds} secs`; // Only display seconds if minutes are 0
+                          }
+                        })()
+                      ) : (
+                        "Failed"
+                      )}
+
+
+
+                    </span>
+                  </td>
+
+                  <td className="text-center">
+                    <span
+                      className={`px-4 py-2 text-center relative m-1 bg-opacity-40 rounded-xl text-[#DA810D] block ${task.success ? "bg-green-600" : "bg-orange-600"
+                        }`}
+                    >
+                      {task.success ? "Success" : "Fail"}
+                    </span>
+                  </td>
+
                 </tr>
               ))}
             </tbody>
