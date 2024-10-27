@@ -4,7 +4,7 @@
 import { ReadContract } from "@/containers/contract/ReadContract";
 
 import { useAccount } from "wagmi";
-
+import { useEffect } from "react";
 
 function ContractExample() {
 
