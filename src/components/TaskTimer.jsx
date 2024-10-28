@@ -1,4 +1,3 @@
-// TaskTimer.js
 'use client';
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -62,11 +61,10 @@ export function TaskTimer() {
       setIsModalOpen(true);
       console.info("Task completed successfully!");
 
+      // Redirect to the homepage after a short delay to show the modal
       setTimeout(() => {
         router.push("/");
       }, 3000);
-
-      
     } catch (error) {
       console.error("Error completing task:", error);
       alert("Error completing the task. Please try again.");
