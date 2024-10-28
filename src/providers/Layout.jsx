@@ -16,24 +16,20 @@ function Layout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
   useEffect(() => {
-    function goBack() {
-      router.back();
+    if (bb) {
+      bb.hide(); // Hides the back button
+      bb.off("click"); // Removes any existing click handler to prevent navigation
     }
+  
     if (close) {
       close.enableConfirmation();
     }
+  
     if (viewport) {
       viewport.expand();
     }
-    if (bb) {
-      if (pathname === "/") {
-        bb.hide();
-        return;
-      }
-      // bb.show();
-      // bb.on("click", goBack);
-    }
-  }, [bb, router, pathname]);
+  }, [bb, close, viewport]);
+  
 
   return (
     <main className="bg-background">
