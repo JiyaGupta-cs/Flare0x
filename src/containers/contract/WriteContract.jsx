@@ -97,28 +97,12 @@ export function CreateTask() {
           />
 
 
-
-          {/* <Button
+          <button
             disabled={isPending || isConfirming}
-            type="submit"
-            variant={"rabble"}
-            size={"one-third"}
-            className='w-full p-2'
-          >
-
-
-            {isPending ? "Confirming..." : "Create Task"}
-
-
-          </Button> */}
-
-
-          <button 
-          disabled={isPending || isConfirming}
             type="submit" class="fbtn text-white">
 
-<p className="text-white z-10"> {isPending ? "Confirming..." : "Create Task"}</p>
-          
+            <p className="text-white z-10"> {isPending ? "Confirming..." : "Create Task"}</p>
+
 
             <div id="container-stars">
               <div id="stars"></div>

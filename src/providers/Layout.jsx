@@ -30,8 +30,8 @@ function Layout({ children }) {
         bb.hide();
         return;
       }
-      bb.show();
-      bb.on("click", goBack);
+      // bb.show();
+      // bb.on("click", goBack);
     }
   }, [bb, router, pathname]);
 
