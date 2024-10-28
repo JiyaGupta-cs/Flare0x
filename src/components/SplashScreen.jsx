@@ -68,7 +68,7 @@ const SplashScreen = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 2, duration: 2, ease: 'easeInOut' }}
                     >
-                        Until The Candle Dies...
+                        Until The Candle Dies..
                     </motion.p>
                 </motion.div>
             )}
