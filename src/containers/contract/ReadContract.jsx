@@ -140,9 +140,9 @@ export function ReadContract() {
 
                           // Determine the output format
                           if (minutes > 0) {
-                            return `${minutes} mins ${seconds} secs`;
+                            return `${minutes} m ${seconds} s`;
                           } else {
-                            return `${seconds} secs`; // Only display seconds if minutes are 0
+                            return `${seconds} s`; // Only display seconds if minutes are 0
                           }
                         })()
                       ) : (
