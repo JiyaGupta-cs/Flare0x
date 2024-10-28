@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+
 .splash-btn {
     display: flex;
     justify-content: center;
@@ -177,3 +180,11 @@ color: white;
     }
   }
   
+
+
+.pixelify-sans {
+  font-family: "Pixelify Sans", sans-serif;
+  /* font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal; */
+}

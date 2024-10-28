@@ -4,6 +4,9 @@ import { ArrowRightIcon } from 'lucide-react';
 import { CreateTask } from '@/containers/contract/WriteContract';
 import './SplashScreen.css';
 
+
+
+
 const SplashScreen = () => {
     const [showSplash, setShowSplash] = useState(true);
     const [showFirstBox, setShowFirstBox] = useState(false);
@@ -46,7 +49,7 @@ const SplashScreen = () => {
                         transition={{ duration: 1, ease: 'easeInOut' }}
                     />
                     <motion.p
-                        className="text-orange-500 text-2xl font-bold mt-4"
+                        className="text-orange-500 text-2xl font-bold mt-4 pixelify-sans"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1, duration: 1, ease: 'easeInOut' }}
@@ -60,19 +63,19 @@ const SplashScreen = () => {
                         transition={{ duration: 2, ease: 'easeInOut' }}
                     />
                     <motion.p
-                        className="text-orange-500 text-2xl font-bold mt-4"
+                        className="text-white text-2xl font-bold mt-4 pixelify-sans"
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 3, duration: 1, ease: 'easeInOut' }}
+                        transition={{ delay: 2, duration: 2, ease: 'easeInOut' }}
                     >
-                        Loading...
+                        Until The Candle Dies...
                     </motion.p>
                 </motion.div>
             )}
 
             {showFirstBox && (
                 <motion.div
-                    className="fixed inset-0 bg-black flex flex-col items-center justify-center font-mono"
+                    className="fixed inset-0 bg-black flex flex-col items-center justify-center pixelify-sans"
                     initial={{ opacity: 0, y: '100%' }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: '-100%' }}
@@ -84,7 +87,7 @@ const SplashScreen = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: 'easeInOut' }}
                     >
-                        <div className="text-center rounded-lg p-6 shadow-lg max-w-sm text-white z-10 font-mono">
+                        <div className="text-center rounded-lg p-6 shadow-lg max-w-sm text-white z-10 pixelify-sans">
                             <p className="text-xl font-bold">
                                 Imagine a dark, quiet room, lit only by a single candle flickering with a hypnotic flame. This flame represents your focus, a delicate light that thrives only when you are calm, determined, and steady. Enter FLARE0x Bot, your guide to mastering this balance.
                             </p>
@@ -107,7 +110,7 @@ const SplashScreen = () => {
 
             {showSecondBox && (
                 <motion.div
-                    className="fixed inset-0 bg-black flex flex-col items-center justify-center font-mono"
+                    className="fixed inset-0 bg-black flex flex-col items-center justify-center pixelify-sans"
                     initial={{ opacity: 0, y: '100%' }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: '-100%' }}
@@ -119,7 +122,7 @@ const SplashScreen = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: 'easeInOut' }}
                     >
-                        <div className="text-center rounded-lg p-6 shadow-lg max-w-sm text-white z-10 font-mono">
+                        <div className="text-center rounded-lg p-6 shadow-lg max-w-sm text-white z-10 pixelify-sans">
                             <p className="text-base font-bold">As you use the app, FLARE0x challenges you to channel your energy into this flame, urging you to hold your focus just a bit longer. Each time you drift, the flame flickers; each time you’re steady, it grows brighter. Your mission? To protect and fuel this flame, knowing that each moment of focus brings you closer to mastery. Can you keep the flame alive and prove your unwavering focus?</p>
                         </div>
 
