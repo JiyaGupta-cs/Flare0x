@@ -89,12 +89,12 @@ export function TaskTimer() {
   const seconds = timeLeft % 60;
 
   return (
-    <div className="flex flex-col items-center justify-center mt-10">
+    <div className="flex flex-col items-center justify-center mt-10 ">
       <div className="timer-animation">
         <div className="tree">
           <Candle meltTime={10000}/>
         </div>
-        <div className="bg-orange-600 mt-[-3rem] mb-[1.2rem] relative z-10 bg-opacity-20 flex flex-col rounded-xl p-2 text-center">
+        <div className="bg-orange-600 mt-[-4rem] mb-[0.7rem] relative z-10 bg-opacity-20 flex flex-col rounded-xl p-2 text-center">
         <p className="text-sm text-white">{label}</p>
         </div>
 
