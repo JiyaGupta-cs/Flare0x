@@ -18,6 +18,21 @@ function formatNumber(number) {
   }
 }
 
+// Function to convert wei to tokens using ethers.js
+function weiToTokens(weiAmount, decimals = 18) {
+  // Convert the wei amount to a number if it's a string
+  const weiNumber = typeof weiAmount === 'string' ? BigInt(weiAmount) : weiAmount;
+
+  // Calculate the conversion factor (10 ** decimals)
+  const conversionFactor = BigInt(10 ** decimals);
+
+  // Divide wei by the conversion factor
+  const tokenAmount = weiNumber / conversionFactor;
+
+  // Return as a float (you can format this as needed)
+  return Number(tokenAmount);
+}
+
 export function ReadContract() {
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -86,7 +101,7 @@ export function ReadContract() {
         <div className="flex flex-col items-center bg-gray-800 rounded-lg p-6 shadow-md mb-6">
           <div className="text-lg font-semibold text-orange-400">Token Balance</div>
           <div className="text-2xl font-bold text-orange-600 mt-2">
-            {formatNumber(parseFloat(tokenBalance?.toString()))} Flares 🔥
+          {formatNumber(parseFloat(weiToTokens(tokenBalance?.toString())))} Flares 🔥
           </div>
         </div>
       )}
