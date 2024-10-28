@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Music from "../Music";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -132,6 +133,10 @@ const Navbar = () => {
           <ConnectButton accountStatus={"avatar"} chainStatus={"icon"} />
         </div>
             </div>
+
+
+
+
           </div>
         </div>
 

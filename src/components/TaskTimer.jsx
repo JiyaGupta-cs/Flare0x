@@ -7,6 +7,7 @@ import { forestAbi } from "@/constants/abi";
 import { forestAddress } from "@/constants/index"; 
 import Candle from "./Candle";
 import "./TaskTimer.css"; // Import your CSS file for animations
+import Music from "./Music";
 
 export function TaskTimer() {
   const searchParams = useSearchParams(); 
@@ -94,7 +95,9 @@ export function TaskTimer() {
         <div className="tree">
           <Candle meltTime={10000}/>
         </div>
-        <div className="bg-orange-600 mt-[-4rem] mb-[0.7rem] relative z-10 bg-opacity-20 flex flex-col rounded-xl p-2 text-center">
+        <Music/>
+
+        <div className="bg-orange-600 mt-[-4rem] mb-[0.5rem] relative z-10 bg-opacity-20 flex flex-col rounded-xl p-2 text-center">
         <p className="text-sm text-white">{label}</p>
         </div>
 
@@ -117,7 +120,7 @@ export function TaskTimer() {
 
        
       </div>
-      <Button onClick={handleGiveUp} variant="outline" className="mt-4 w-[160px] border-hidden  text-[#FFFFFF]">
+      <Button onClick={handleGiveUp} variant="outline" className="mt-3 w-[160px] border-hidden  text-[#FFFFFF]">
         Give Up
       </Button>
       {isTaskComplete && <p className="text-green-500">Task Completed! Tokens Rewarded.</p>}
