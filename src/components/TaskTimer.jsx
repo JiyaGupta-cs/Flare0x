@@ -1,3 +1,4 @@
+// TaskTimer.js
 'use client';
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { forestAddress } from "@/constants/index";
 import Candle from "./Candle";
 import "./TaskTimer.css"; // Import your CSS file for animations
 import Music from "./Music";
+import Modal from "@/components/Modal"; // Import the Modal component
 
 export function TaskTimer() {
   const searchParams = useSearchParams(); 
@@ -17,11 +19,12 @@ export function TaskTimer() {
   
   const [timeLeft, setTimeLeft] = useState(duration ? parseInt(duration) : 0);
   const [isTaskComplete, setIsTaskComplete] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
   const { writeContract } = useWriteContract();
   
   // State to control the animation
   const [animateSeconds, setAnimateSeconds] = useState(false);
-
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -55,6 +58,8 @@ export function TaskTimer() {
         args: [], 
       });
       setIsTaskComplete(true);
+      setModalMessage("Task Completed! Tokens Rewarded.");
+      setIsModalOpen(true);
       console.info("Task completed successfully!");
     } catch (error) {
       console.error("Error completing task:", error);
@@ -62,7 +67,6 @@ export function TaskTimer() {
     }
   };
   
-
   const handleGiveUp = async () => {
     setTimeLeft(0); 
     
@@ -90,7 +94,7 @@ export function TaskTimer() {
   const seconds = timeLeft % 60;
 
   return (
-    <div className="flex flex-col items-center justify-center mt-10 ">
+    <div className="flex flex-col items-center justify-center mt-10">
       <div className="timer-animation">
         <div className="tree">
           <Candle meltTime={10000}/>
@@ -98,32 +102,37 @@ export function TaskTimer() {
         <Music/>
 
         <div className="bg-orange-600 mt-[-4rem] mb-[0.5rem] relative z-10 bg-opacity-20 flex flex-col rounded-xl p-2 text-center">
-        <p className="text-sm text-white">{label}</p>
+          <p className="text-sm text-white">{label}</p>
         </div>
 
         <div className="time-container bg-orange-600 relative z-10 bg-opacity-20 flex flex-col rounded-xl p-4 text-[#DA810D] ">
-            <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <div className="time-card minutes">
-            <p>{String(minutes).padStart(2, "0")}</p>
-          </div>
-          <div className="separator text-[#DA810D]"><span>:</span></div>
-          <div className={`time-card seconds ${animateSeconds ? 'revolve' : ''}`}>
-            <p>{String(seconds).padStart(2, "0")}</p>
-          </div>
+              <p>{String(minutes).padStart(2, "0")}</p>
             </div>
-            <div className="flex gap-10 text-lg">
-                <span>mins</span>
-                <span className="">sec</span>
+            <div className="separator text-[#DA810D]"><span>:</span></div>
+            <div className={`time-card seconds ${animateSeconds ? 'revolve' : ''}`}>
+              <p>{String(seconds).padStart(2, "0")}</p>
             </div>
-         
+          </div>
+          <div className="flex gap-10 text-lg">
+            <span>mins</span>
+            <span className="">sec</span>
+          </div>
         </div>
-
-       
       </div>
-      <Button onClick={handleGiveUp} variant="outline" className="mt-3 w-[160px] border-hidden  text-[#FFFFFF]">
+      <Button onClick={handleGiveUp} variant="outline" className="mt-3 w-[160px] border-hidden text-[#FFFFFF]">
         Give Up
       </Button>
-      {isTaskComplete && <p className="text-green-500">Task Completed! Tokens Rewarded.</p>}
+
+      {/* Modal for task completion message */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Task Completed!"
+        message={modalMessage}
+        isSuccess={isTaskComplete}
+      />
     </div>
   );
 }
