@@ -13,8 +13,8 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata = {
-  title: "Create ETH Mini App",
-  description: "Template for creating a Mini App on Ethereum",
+  title: "Flare0x_Bot",
+  description: "Until the Candle Dies !!!",
 };
 
 export default function RootLayout({
