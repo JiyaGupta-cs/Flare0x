@@ -1,16 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import Music from "../Music";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [timerPage,setTimerPage]=useState(false);
+
+  useEffect(() => {
+    console.log("Current Pathname:", pathname);  // Debugging line
+    const taskTimerRegex = /^\/task-timer/;
+    setTimerPage(taskTimerRegex.test(pathname));
+  }, [pathname]);
 
   const menuItems = [
     { href: "/", label: "Home" },
@@ -25,13 +32,16 @@ const Navbar = () => {
             <div className="flex gap-2">
 
            
-            {/* Menu Toggle Button */}
+    
             <button 
+
+
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={cn(
                 "relative z-50 p-2.5 rounded-lg transition-all duration-300",
                 "hover:bg-orange-500/20 group",
-                isMenuOpen && "bg-orange-500/20"
+                isMenuOpen && "bg-orange-500/20",
+                timerPage && "hidden"
               )}
               aria-label="Toggle menu"
             >
@@ -142,7 +152,7 @@ const Navbar = () => {
 
         {/* Sidebar Menu */}
         <div className={cn(
-          "fixed top-0 left-0 w-[300px] h-screen bg-gradient-to-b from-gray-900 to-black",
+          "fixed top-0 bottom-0 w-[300px] h-screen bg-gradient-to-b from-gray-900 to-black",
           "transform transition-transform duration-500 ease-out z-40",
           "border-r border-orange-500/10 flex flex-col",
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
