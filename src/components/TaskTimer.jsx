@@ -61,6 +61,12 @@ export function TaskTimer() {
       setModalMessage("Task Completed! Tokens Rewarded.");
       setIsModalOpen(true);
       console.info("Task completed successfully!");
+
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
+
+      
     } catch (error) {
       console.error("Error completing task:", error);
       alert("Error completing the task. Please try again.");
