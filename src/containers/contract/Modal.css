@@ -18,9 +18,9 @@
     background-image: linear-gradient(#212121, #212121),
       linear-gradient(
         137.48deg,
-        #FF4500 10%,  /* Replace #ffdb3b with #FF4500 */
-        #FF8C00 35%,  /* Replace #fe53bb with #FF8C00 */
-        #FFD700 60%,  /* Replace #8f51ea with #FFD700 */
+        #FF4500 10%, 
+        #FF8C00 35%,  
+        #FFD700 60%,  
         #FF4500 85%
       );
     background-origin: border-box;

@@ -5,6 +5,7 @@ import {
   useViewport,
 } from "@telegram-apps/sdk-react";
 import { CreateTask } from "@/containers/contract/WriteContract";
+import SplashScreen from "@/components/SplashScreen";
 
 export default function Home() {
   const mainBtn = useMainButton();
@@ -23,7 +24,9 @@ export default function Home() {
     <main className="">
       
       <div>
-           <CreateTask/>
+           {/* <CreateTask/> */}
+
+           <SplashScreen/>
         </div>
     </main>
   );
