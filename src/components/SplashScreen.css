@@ -188,3 +188,13 @@ color: white;
   font-weight: <weight>;
   font-style: normal; */
 }
+
+
+
+.text-paragraph {
+    white-space: normal; /* Allow normal wrapping */
+    overflow-wrap: break-word; /* Ensure long words break */
+    word-wrap: break-word; /* Provide support for older browsers */
+    max-width: 800px; /* Set a max-width to avoid breaking */
+    margin: 0 auto; /* Center the paragraph */
+}

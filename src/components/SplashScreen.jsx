@@ -88,7 +88,7 @@ const SplashScreen = () => {
                         transition={{ duration: 1, ease: 'easeInOut' }}
                     >
                         <div className="text-center rounded-lg p-6 shadow-lg max-w-sm text-white z-10 pixelify-sans">
-                            <p className="text-xl font-bold">
+                            <p className="text-xl font-bold text-paragraph">
                                 Imagine a dark, quiet room, lit only by a single candle flickering with a hypnotic flame. This flame represents your focus, a delicate light that thrives only when you are calm, determined, and steady. Enter FLARE0x Bot, your guide to mastering this balance.
                             </p>
                         </div>
