@@ -6,13 +6,13 @@ import { useEffect } from "react";
 
 function formatNumber(number) {
   if (number >= 1e12) {
-    return (number / 1e12).toFixed(0) + 'T'; // Trillions
+    return (number / 1e12).toFixed(4) + 'T'; // Trillions
   } else if (number >= 1e9) {
-    return (number / 1e9).toFixed(0) + 'B'; // Billions
+    return (number / 1e9).toFixed(3) + 'B'; // Billions
   } else if (number >= 1e6) {
-    return (number / 1e6).toFixed(0) + 'M'; // Millions
+    return (number / 1e6).toFixed(2) + 'M'; // Millions
   } else if (number >= 1e3) {
-    return (number / 1e3).toFixed(0) + 'K'; // Thousands
+    return (number / 1e3).toFixed(1) + 'K'; // Thousands
   } else {
     return number.toString();
   }
