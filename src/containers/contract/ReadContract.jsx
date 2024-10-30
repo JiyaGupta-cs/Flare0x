@@ -6,9 +6,9 @@ import { useEffect } from "react";
 
 function formatNumber(number) {
   if (number >= 1e12) {
-    return (number / 1e12).toFixed(4) + 'T'; // Trillions
+    return (number / 1e12).toFixed(4) + 'T'; // Trillions xxxxxxxxxxxxxx
   } else if (number >= 1e9) {
-    return (number / 1e9).toFixed(3) + 'B'; // Billions
+    return (number / 1e9).toFixed(3) + 'B'; // Billions xxxxxxxxxxxxxxx
   } else if (number >= 1e6) {
     return (number / 1e6).toFixed(2) + 'M'; // Millions
   } else if (number >= 1e3) {
