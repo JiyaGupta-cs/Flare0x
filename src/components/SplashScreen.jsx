@@ -4,15 +4,21 @@ import { ArrowRightIcon } from 'lucide-react';
 import { CreateTask } from '@/containers/contract/WriteContract';
 import './SplashScreen.css';
 
-
-
-
 const SplashScreen = () => {
     const [showSplash, setShowSplash] = useState(true);
     const [showFirstBox, setShowFirstBox] = useState(false);
     const [showSecondBox, setShowSecondBox] = useState(false);
 
     useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        const splashParam = queryParams.get('splash');
+
+        // Check if the splash parameter is 'false' in the URL
+        if (splashParam === 'false') {
+            setShowSplash(false);
+            return; // Skip the rest of the effect
+        }
+
         const timer = setTimeout(() => {
             setShowSplash(false);
             setShowFirstBox(true);
@@ -128,7 +134,7 @@ const SplashScreen = () => {
 
                         <div className="mt-4 flex justify-end">
                             <motion.button
-                                className="bg-orange-500 text-white px-4 py-2 rounded-md z- flex items-center absolute right-[-1rem] bottom-[-1rem]"
+                                className="bg-orange-500 text-white px-4 py-2 rounded-md flex items-center absolute right-[-1rem] bottom-[-1rem]"
                                 onClick={handleSecondBoxNext}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}

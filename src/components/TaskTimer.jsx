@@ -63,7 +63,7 @@ export function TaskTimer() {
 
       // Redirect to the homepage after a short delay to show the modal
       setTimeout(() => {
-        router.push("/");
+        router.push("/?splash=false");
       }, 3000);
     } catch (error) {
       console.error("Error completing task:", error);
@@ -87,7 +87,7 @@ export function TaskTimer() {
       alert("Error giving up on the task. Please try again.");
     }
 
-    router.push("/"); 
+    router.push("/?splash=false"); 
   };
 
   if (!label || !duration) {

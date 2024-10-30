@@ -20,7 +20,7 @@ const Navbar = () => {
   }, [pathname]);
 
   const menuItems = [
-    { href: "/", label: "Home" },
+    { href: "/?splash=false", label: "Home" },
     { href: "/contract", label: "Analytics" },
   ];
 
